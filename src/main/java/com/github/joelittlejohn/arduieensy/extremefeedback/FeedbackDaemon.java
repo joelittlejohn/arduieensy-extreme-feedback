@@ -5,18 +5,20 @@ import java.net.URL;
 
 public class FeedbackDaemon {
 
-	private static final String ENV_VARIABLE_URL = "ARDUIEENSY_POLL_URL";
+    public static void main(String[] args) {
 
-	public static void main(String[] args) {
-		
-		String url = System.getenv(ENV_VARIABLE_URL);
-		
-		try {
-			Poller poller = new Poller(new Job(new URL(url)), new Orb());
-			poller.start();
-		} catch (MalformedURLException e) {
-			System.err.println("Couldn't parse poll url, " + ENV_VARIABLE_URL + " had value: " + url);
-		}
-	}
-	
+        if (args.length != 1) {
+            throw new IllegalArgumentException("Usage: FeedbackDaemon <job url>");
+        }
+
+        String url = args[0];
+
+        try {
+            Poller poller = new Poller(new Job(new URL(url)), new Orb());
+            poller.start();
+        } catch (MalformedURLException e) {
+            throw new IllegalArgumentException("Couldn't parse poll url: " + url, e);
+        }
+    }
+
 }
