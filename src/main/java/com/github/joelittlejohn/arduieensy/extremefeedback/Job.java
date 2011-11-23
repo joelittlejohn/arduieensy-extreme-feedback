@@ -27,12 +27,18 @@ public class Job {
 
     public JobState getState() {
 
+        System.out.println("Getting job state from: " + this.statusUrl);
+
         try (InputStream inputStream = statusUrl.openStream()) {
 
             JsonNode lastBuild = objectMapper.readTree(inputStream);
 
             if (lastBuild.has("result")) {
-                return JobState.valueOf(lastBuild.get("result").getTextValue());
+                JobState state = JobState.valueOf(lastBuild.get("result").getTextValue());
+
+                System.out.println("Found job state " + state);
+
+                return state;
             } else {
                 throw new UnexpectedResponseException("Received a response that could not be understood (no 'result' value was present):\n" + lastBuild);
             }
