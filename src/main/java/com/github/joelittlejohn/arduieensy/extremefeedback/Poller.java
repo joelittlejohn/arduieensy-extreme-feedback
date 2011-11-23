@@ -1,8 +1,12 @@
 package com.github.joelittlejohn.arduieensy.extremefeedback;
 
+import static com.github.joelittlejohn.arduieensy.extremefeedback.util.ThreadUtils.*;
+
+import java.util.concurrent.TimeUnit;
+
 public class Poller {
 
-    private static final long FIVE_MINUTES = 1000 * 60 * 5;
+    private static final long POLL_INTERVAL = TimeUnit.SECONDS.toMillis(30);
 
     private final Job job;
     private final Orb orb;
@@ -21,7 +25,7 @@ public class Poller {
 
                 switch (jobState) {
                     case SUCCESS:
-                        orb.setColour(Colour.GREEN);
+                        orb.setColour(Colour.BLUE);
                         break;
                     case UNSTABLE:
                         orb.setColour(Colour.YELLOW);
@@ -30,12 +34,12 @@ public class Poller {
                         orb.setColour(Colour.RED);
                         break;
                 }
-
-                Thread.sleep(FIVE_MINUTES);
             } catch (Exception e) {
                 // log any exception but don't allow polling to cease completely
                 e.printStackTrace(System.err);
             }
+
+            sleepQuietly(POLL_INTERVAL);
         }
 
     }

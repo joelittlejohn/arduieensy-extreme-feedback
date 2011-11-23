@@ -1,20 +1,25 @@
 package com.github.joelittlejohn.arduieensy.extremefeedback;
 
+import static com.github.joelittlejohn.arduieensy.extremefeedback.util.ThreadUtils.*;
+import static java.lang.String.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Orb {
 
+    private static final int COLOUR_RAMP_INTERVAL = 3;
+
     private static final int PIN_NUMBER_BLUE = 12;
     private static final int PIN_NUMBER_GREEN = 14;
     private static final int PIN_NUMBER_RED = 15;
-    
+
     private final Teensy teensy;
     private final Map<Colour, Pin> pins = new HashMap<>();
-    
+
     public Orb(Teensy teensy) {
         this.teensy = teensy;
-        
+
         this.pins.put(Colour.RED, teensy.getPin(PIN_NUMBER_RED));
         this.pins.put(Colour.GREEN, teensy.getPin(PIN_NUMBER_GREEN));
         this.pins.put(Colour.BLUE, teensy.getPin(PIN_NUMBER_BLUE));
@@ -23,8 +28,11 @@ public class Orb {
     private Colour currentColour;
 
     public void setColour(Colour newColour) {
+
+        System.out.println(format("Setting new Orb colour %s (current colour %s)", newColour, this.currentColour));
+
         if (this.currentColour != newColour) {
-            if (this.currentColour != null ) {
+            if (this.currentColour != null) {
                 rampDownFromColour(currentColour);
             }
             throbToColour(newColour);
@@ -37,11 +45,13 @@ public class Orb {
     }
 
     private void throbToColour(Colour newColour) {
+
         rampUpToColour(newColour);
         rampDownFromColour(newColour);
         rampUpToColour(newColour);
         rampDownFromColour(newColour);
         rampUpToColour(newColour);
+
     }
 
     private void rampUpToColour(Colour newColour) {
@@ -51,6 +61,8 @@ public class Orb {
             for (Colour colour : newColour.getComponentColours()) {
                 teensy.write(pins.get(colour), i);
             }
+
+            sleepQuietly(COLOUR_RAMP_INTERVAL);
         }
     }
 
@@ -60,17 +72,18 @@ public class Orb {
             for (Colour colour : currentColour.getComponentColours()) {
                 teensy.write(pins.get(colour), i);
             }
+
+            sleepQuietly(COLOUR_RAMP_INTERVAL);
         }
 
     }
 
     private void jumpToColour(Colour newColour) {
 
-        turnOffAllPins();
-
         for (Colour colour : newColour.getComponentColours()) {
             teensy.write(pins.get(colour), Pin.MAX_VALUE);
         }
+
     }
 
     private void turnOffAllPins() {
@@ -79,14 +92,4 @@ public class Orb {
         }
     }
 
-    public static void main(String[] args) {
-        
-        Orb orb = new Orb(new Teensy());
-        orb.setColour(Colour.RED);
-        orb.setColour(Colour.GREEN);
-        orb.setColour(Colour.BLUE);
-
-        System.exit(0);
-    }
-    
 }
