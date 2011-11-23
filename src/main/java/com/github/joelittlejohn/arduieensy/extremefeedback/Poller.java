@@ -21,7 +21,7 @@ public class Poller {
 
                 switch (jobState) {
                     case SUCCESS:
-                        orb.setColour(Colour.BLUE);
+                        orb.setColour(Colour.GREEN);
                         break;
                     case UNSTABLE:
                         orb.setColour(Colour.YELLOW);

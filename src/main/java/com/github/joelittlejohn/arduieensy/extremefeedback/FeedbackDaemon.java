@@ -14,7 +14,7 @@ public class FeedbackDaemon {
         String url = args[0];
 
         try {
-            Poller poller = new Poller(new Job(new URL(url)), new Orb());
+            Poller poller = new Poller(new Job(new URL(url)), new Orb(new Teensy()));
             poller.start();
         } catch (MalformedURLException e) {
             throw new IllegalArgumentException("Couldn't parse poll url: " + url, e);
