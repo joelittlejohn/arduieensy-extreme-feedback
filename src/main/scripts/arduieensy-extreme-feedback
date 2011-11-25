@@ -1,0 +1,22 @@
+#! /bin/bash
+
+PID_FILE=/var/run/arduieensy-extreme-feedback
+JAR_FILE=/var/lib/arduieensy-extreme-feedback/arduieensy-extreme-feedback.jar
+JOB_URL="$ARDUIEENSY_EXTREME_FEEDBACK_URL"
+
+case "$1" in
+  start)
+    start-stop-daemon --start --background --make-pidfile --pidfile $PID_FILE --exec /usr/bin/java -- -jar $JAR_FILE $JOB_URL 
+    ;;
+  restart)
+    /etc/init.d/arduieensy-extreme-feedback stop
+    /etc/init.d/arduieensy-extreme-feedback start
+    ;;
+  stop)
+    sudo start-stop-daemon --stop --pidfile /var/run/arduieensy-extreme-feedback
+    ;;
+  *)
+    echo "Usage: $0 start|stop|restart" >&2
+    exit 3
+    ;;
+esac
