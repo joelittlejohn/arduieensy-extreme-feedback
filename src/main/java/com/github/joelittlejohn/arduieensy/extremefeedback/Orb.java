@@ -23,6 +23,13 @@ public class Orb {
         this.pins.put(Colour.RED, teensy.getPin(PIN_NUMBER_RED));
         this.pins.put(Colour.GREEN, teensy.getPin(PIN_NUMBER_GREEN));
         this.pins.put(Colour.BLUE, teensy.getPin(PIN_NUMBER_BLUE));
+
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Orb.this.turnOffAllPins();
+            }
+        }));
     }
 
     private Colour currentColour;
