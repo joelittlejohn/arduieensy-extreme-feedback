@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Enumeration;
 
+import com.github.joelittlejohn.arduieensy.extremefeedback.exception.PortAccessException;
+
 public class Teensy {
 
     static {

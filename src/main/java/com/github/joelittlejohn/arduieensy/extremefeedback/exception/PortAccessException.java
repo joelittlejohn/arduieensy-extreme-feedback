@@ -1,4 +1,4 @@
-package com.github.joelittlejohn.arduieensy.extremefeedback;
+package com.github.joelittlejohn.arduieensy.extremefeedback.exception;
 
 public class PortAccessException extends RuntimeException {
 
