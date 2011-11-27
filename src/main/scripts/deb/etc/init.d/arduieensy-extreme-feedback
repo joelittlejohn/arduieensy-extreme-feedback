@@ -1,8 +1,10 @@
 #! /bin/bash
 
+CONFIG_FILE=/etc/arduieensy-extreme-feedback/config
 PID_FILE=/var/run/arduieensy-extreme-feedback
 JAR_FILE=/var/lib/arduieensy-extreme-feedback/arduieensy-extreme-feedback.jar
-JOB_URL="$ARDUIEENSY_EXTREME_FEEDBACK_URL"
+
+source CONFIG_FILE
 
 case "$1" in
   start)

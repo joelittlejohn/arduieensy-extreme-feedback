@@ -1,0 +1,3 @@
+# Config file for the arduieensy-extreme-feedback orb
+#
+JOB_URL="http://ci.jenkins-ci.org/job/jenkins_main_trunk"
