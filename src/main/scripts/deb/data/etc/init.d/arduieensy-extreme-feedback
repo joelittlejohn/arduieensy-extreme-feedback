@@ -8,7 +8,7 @@ source CONFIG_FILE
 
 case "$1" in
   start)
-    start-stop-daemon --start --background --make-pidfile --pidfile $PID_FILE --exec /usr/bin/java -- -jar $JAR_FILE $JOB_URL 
+    start-stop-daemon --start --background --make-pidfile --pidfile $PID_FILE --exec /usr/lib/jvm/java-7-openjdk-i386/jre/bin/java -- -jar $JAR_FILE $JOB_URL 
     ;;
   restart)
     /etc/init.d/arduieensy-extreme-feedback stop
