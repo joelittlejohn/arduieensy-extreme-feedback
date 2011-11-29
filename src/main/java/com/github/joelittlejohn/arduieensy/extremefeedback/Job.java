@@ -1,5 +1,7 @@
 package com.github.joelittlejohn.arduieensy.extremefeedback;
 
+import static org.apache.commons.lang.StringUtils.*;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -18,11 +20,13 @@ public class Job {
     private final URL statusUrl;
 
     public Job(URL url) {
+        
         try {
-            this.statusUrl = new URL(url, "lastBuild/api/json");
+            this.statusUrl = new URL(removeEnd(url.toString(),"/") + "/lastBuild/api/json");
         } catch (MalformedURLException e) {
             throw new IllegalArgumentException("Failed to construct a valid status url using the given job url: " + url);
         }
+        
     }
 
     public JobState getState() {
