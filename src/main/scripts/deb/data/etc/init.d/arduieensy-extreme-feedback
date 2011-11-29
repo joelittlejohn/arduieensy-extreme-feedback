@@ -4,11 +4,11 @@ CONFIG_FILE=/etc/arduieensy-extreme-feedback/config
 PID_FILE=/var/run/arduieensy-extreme-feedback
 JAR_FILE=/var/lib/arduieensy-extreme-feedback/arduieensy-extreme-feedback.jar
 
-source CONFIG_FILE
+source $CONFIG_FILE
 
 case "$1" in
   start)
-    start-stop-daemon --start --background --make-pidfile --pidfile $PID_FILE --exec /usr/lib/jvm/java-7-openjdk-i386/jre/bin/java -- -jar $JAR_FILE $JOB_URL 
+    start-stop-daemon --start --background --make-pidfile --pidfile $PID_FILE --exec /usr/lib/jvm/java-7-openjdk-`uname -i`/jre/bin/java -- -jar $JAR_FILE $JOB_URL 
     ;;
   restart)
     /etc/init.d/arduieensy-extreme-feedback stop

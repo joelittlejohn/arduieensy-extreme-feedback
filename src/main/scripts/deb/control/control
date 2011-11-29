@@ -1,6 +1,6 @@
 Package: arduieensy-extreme-feedback
-Version: 0.0.1
-Architecture: i386
+Version: ${project.version}
+Architecture: all
 Maintainer: Joe Littlejohn <joelittlejohn@gmail.com>
 Installed-Size: 20
 Depends: openjdk-7-jre
