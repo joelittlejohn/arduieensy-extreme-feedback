@@ -1,8 +1,9 @@
 #!/bin/sh
-set -e
 
 if [ "$1" = "configure" ]; then
-    if [ -x "/etc/init.d/arduieensy-extreme-feedback" ]; then
-        invoke-rc.d arduieensy-extreme-feedback start || exit $?
+    if [ -e "/etc/init.d/arduieensy-extreme-feedback" ]; then
+        chmod a+x /etc/init.d/arduieensy-extreme-feedback
+        update-rc.d arduieensy-extreme-feedback defaults
+        invoke-rc.d arduieensy-extreme-feedback start
     fi
 fi
