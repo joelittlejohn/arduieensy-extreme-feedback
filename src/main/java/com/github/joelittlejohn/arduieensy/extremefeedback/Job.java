@@ -22,7 +22,7 @@ public class Job {
     public Job(URL url) {
         
         try {
-            this.statusUrl = new URL(removeEnd(url.toString(),"/") + "/lastBuild/api/json");
+            this.statusUrl = new URL(removeEnd(url.toString(),"/") + "/lastCompletedBuild/api/json");
         } catch (MalformedURLException e) {
             throw new IllegalArgumentException("Failed to construct a valid status url using the given job url: " + url);
         }
