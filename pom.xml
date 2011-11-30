@@ -11,6 +11,12 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    
+    <scm>
+        <connection>scm:git:git@github.com:joelittlejohn/arduieensy-extreme-feedback.git</connection>
+        <developerConnection>scm:git:git@github.com:joelittlejohn/arduieensy-extreme-feedback.git</developerConnection>
+        <url>http://github.com/joelittlejohn/arduieensy-extreme-feedback</url>
+    </scm>
 
     <build>
         <finalName>${project.artifactId}</finalName>
