@@ -8,8 +8,3 @@ Section: java
 Priority: extra
 Homepage: https://github.com/joelittlejohn/arduieensy-extreme-feedback
 Description: extreme feedback controller daemon for teensy-based LED orb
- IcedTeaPlugin is a web browser plugin to execute Java applets, supporting
- LiveConnect/JavaScript. It is targeted for xulrunner-1.9 and compatible
- browsers that support the NPAPI.
- .
- This is a dependency package, it can be safely removed after upgrade.
