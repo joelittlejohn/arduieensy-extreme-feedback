@@ -1,12 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.joelittlejohn</groupId>
     <artifactId>arduieensy-extreme-feedback</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -79,21 +77,15 @@
                         </goals>
                         <configuration>
                             <target>
-                                <tar destfile="${project.build.directory}/deb/control.tar.gz"
-                                     basedir="${project.build.directory}/deb/control"
-                                     compression="gzip"/>
-                                <move file="${project.build.directory}/${project.build.finalName}.jar"
-                                      todir="${project.build.directory}/deb/data/var/lib/arduieensy-extreme-feedback"/>
-                                <tar destfile="${project.build.directory}/deb/data.tar.gz"
-                                     basedir="${project.build.directory}/deb/data"
-                                     compression="gzip"/>
-                                <exec executable="ar"
-                                      dir="${project.build.directory}/deb">
-                                    <arg value="rcs"/>
-                                    <arg value="${project.build.finalName}.deb"/>
-                                    <arg value="debian-binary"/>
-                                    <arg value="control.tar.gz"/>
-                                    <arg value="data.tar.gz"/>
+                                <tar destfile="${project.build.directory}/deb/control.tar.gz" basedir="${project.build.directory}/deb/control" compression="gzip" />
+                                <move file="${project.build.directory}/${project.build.finalName}.jar" todir="${project.build.directory}/deb/data/var/lib/arduieensy-extreme-feedback" />
+                                <tar destfile="${project.build.directory}/deb/data.tar.gz" basedir="${project.build.directory}/deb/data" compression="gzip" />
+                                <exec executable="ar" dir="${project.build.directory}/deb">
+                                    <arg value="rcs" />
+                                    <arg value="${project.build.finalName}.deb" />
+                                    <arg value="debian-binary" />
+                                    <arg value="control.tar.gz" />
+                                    <arg value="data.tar.gz" />
                                 </exec>
                             </target>
                         </configuration>
