@@ -1,5 +1,4 @@
 #!/bin/sh
-set -e
 if [ -x "/etc/init.d/arduieensy-extreme-feedback" ]; then
     invoke-rc.d arduieensy-extreme-feedback stop
     update-rc.d -f arduieensy-extreme-feedback remove
