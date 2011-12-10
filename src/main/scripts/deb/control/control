@@ -3,7 +3,7 @@ Version: ${project.version}
 Architecture: all
 Maintainer: Joe Littlejohn <joelittlejohn@gmail.com>
 Installed-Size: 20
-Depends: openjdk-7-jre
+Depends: openjdk-7-jre, librxtx-java
 Section: java
 Priority: extra
 Homepage: https://github.com/joelittlejohn/arduieensy-extreme-feedback
