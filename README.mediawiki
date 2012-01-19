@@ -2,7 +2,7 @@
 
 == Shopping list ==
 
-* [http://www.engadget.com/2007/12/05/usb-moody-ball-apes-ambient-orb-soothes-your-soul/ Connectland Ambient Orb]
+* [http://www.engadget.com/2007/12/05/usb-moody-ball-apes-ambient-orb-soothes-your-soul/ Connectland USB Moody Ball]
 * [http://www.pjrc.com/store/teensy.html Teensy 2.0]
 * [http://search.ebay.co.uk/breadboard+kit Breadboard and some jumper wires]
 * [http://search.ebay.co.uk/stripboard Small piece of stripboard]
