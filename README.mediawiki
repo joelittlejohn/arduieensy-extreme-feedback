@@ -8,5 +8,6 @@
 * [http://search.ebay.co.uk/stripboard Small piece of stripboard]
 * 3x [http://www.rapidonline.com/Electronic-Components/5mm-Red-green-LED-Tri-colour-56-0350 5mm Red/green LED Tri-colour]
 * 3x [http://www.rapidonline.com/Electronic-Components/5mm-Red-blue-LED-Tri-colour-56-0352 5mm Red/blue LED Tri-colour]
+* 3x [http://www.rapidonline.com/Electronic-Components/10r-Mbb0207-0-4w-Precision-Resistor-63-1000 10Ω 0.4W Metal Film Resistor]
 * [http://search.ebay.co.uk/micro+usb+cable Micro USB cable]
 
