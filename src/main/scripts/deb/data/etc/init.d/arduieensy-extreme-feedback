@@ -1,19 +1,15 @@
-#! /bin/bash
+#!/bin/bash
 
 CONFIG_FILE=/etc/arduieensy-extreme-feedback/config
 PID_FILE=/var/run/arduieensy-extreme-feedback
 JAR_FILE=/var/lib/arduieensy-extreme-feedback/arduieensy-extreme-feedback.jar
-JAVA_BIN=/usr/lib/jvm/java-7-openjdk-`uname -i`/jre/bin/java
-
-if [ ! -e $JAVA_BIN ]; then
-  /usr/lib/jvm/java-7-openjdk/jre/bin/java
-fi
+JAVA_BIN=$(which java)
 
 source $CONFIG_FILE
 
 case "$1" in
   start)
-    start-stop-daemon --start --background --make-pidfile --pidfile $PID_FILE --exec $JAVA_BIN -- -jar $JAR_FILE "$JOB_URL"
+    start-stop-daemon --start --background --make-pidfile --pidfile $PID_FILE --exec $JAVA_BIN -- -Djava.library.path=/usr/lib/jni -jar $JAR_FILE "$JOB_URL"
     ;;
   restart)
     /etc/init.d/arduieensy-extreme-feedback stop
