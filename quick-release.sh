@@ -38,8 +38,8 @@ echo NEXT_DEVELOPMENT_VERSION: $NEXT_DEVELOPMENT_VERSION
 
 # now update to the release version and tag
 mvn versions:set -DnewVersion=$RELEASE_VERSION -DgenerateBackupPoms=false \
-    scm:checkin -Dmessage="[release] prepare release ($RELEASE_VERSION") -DpushChanges=false \
-    scm:tag -Dtag=$RELEASE_VERSION -DpushChanges=false
+    scm:checkin -Dmessage="[release] prepare release ($RELEASE_VERSION)" \
+    scm:tag -Dtag="\${project.artifactId}-$RELEASE_VERSION" -DpushChanges=false
 
 # perform the actual release
 mvn deploy "$@"
