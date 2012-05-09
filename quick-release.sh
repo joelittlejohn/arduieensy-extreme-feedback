@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # best to stop if anything goes wrong
 set -e
@@ -37,7 +37,8 @@ echo RELEASE_VERSION: $RELEASE_VERSION
 echo NEXT_DEVELOPMENT_VERSION: $NEXT_DEVELOPMENT_VERSION
 
 # now update to the release version and tag
-mvn versions:set -DnewVersion=$RELEASE_VERSION -DgenerateBackupPoms=false \
+mvn scm:check-local-modification \
+    versions:set -DnewVersion=$RELEASE_VERSION -DgenerateBackupPoms=false \
     scm:checkin -Dmessage="[release] prepare release ($RELEASE_VERSION)" \
     scm:tag -Dtag="\${project.artifactId}-$RELEASE_VERSION" -DpushChanges=false
 
