@@ -16,7 +16,7 @@ case "$1" in
     /etc/init.d/arduieensy-extreme-feedback start
     ;;
   stop)
-    sudo start-stop-daemon --stop --pidfile /var/run/arduieensy-extreme-feedback
+    sudo start-stop-daemon --stop --pidfile $PID_FILE
     ;;
   *)
     echo "Usage: $0 start|stop|restart" >&2
